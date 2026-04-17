@@ -35,8 +35,8 @@ def calculate_lqr_gain(A, B, Q, R):
     return K
 
 
-Q = np.diag([50, 100, 10, 50])
-R = np.array([[0.01]])
+Q = np.diag([50, 500, 1, 200])
+R = np.array([[3]])
 K = calculate_lqr_gain(A, B, Q, R)
 data.qpos[1] = 0.2
 x_target = np.array([0.0,0.0,0.0,0.0])
@@ -56,3 +56,7 @@ while viewer.is_running():
     time_until_next_step = model.opt.timestep - (time.time() - step_start)
     if time_until_next_step > 0:
         time.sleep(time_until_next_step)
+
+
+
+    

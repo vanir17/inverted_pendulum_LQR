@@ -1,0 +1,30 @@
+Sat Apr 18 00:12:52 2026
+ERROR: mjui_add: slider expects 'min max [div]'
+
+Sat Apr 18 00:13:02 2026
+ERROR: mjui_add: slider expects 'min max [div]'
+
+Sat Apr 18 00:15:11 2026
+ERROR: mjui_add: slider expects 'min max [div]'
+
+Sat Apr 18 00:17:01 2026
+ERROR: mjui_add: slider expects 'min max [div]'
+
+Sat Apr 18 00:19:50 2026
+ERROR: mjui_add: slider expects 'min max [div]'
+
+Sat Apr 18 00:20:21 2026
+ERROR: mjui_add: slider expects 'min max [div]'
+
+Sat Apr 18 00:21:53 2026
+ERROR: mjui_add: slider expects 'min max [div]'
+
+Sat Apr 18 00:22:25 2026
+ERROR: mjui_add: slider expects 'min max [div]'
+
+Sat Apr 18 00:22:32 2026
+ERROR: mjui_add: slider expects 'min max [div]'
+
+Sat Apr 18 00:22:43 2026
+ERROR: mjui_add: slider expects 'min max [div]'
+

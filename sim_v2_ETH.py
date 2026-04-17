@@ -6,14 +6,15 @@ import time
 
 model = mujoco.MjModel.from_xml_path("env.xml")
 data = mujoco.MjData(model)
+viewer = mujoco.viewer.launch_passive(model,data)
 
 Q_goal = np.diag([50, 500, 1, 20]) #x, theta, x_dot, theta_dot
 R_goal = np.array([0.5])
 
-# 2. SPSA constants
+# 2. SPSA constants - SPALL CONSTANTS
 alpha = 0.602 #Decay rate
 gamma = 0.101 
-a_gain = 0.4    # Learning rate
+a_gain = 0.8    # Learning rate
 c_gain = 0.05   # Pertubation value
 A_bar = 5       # Stable delay 
 
@@ -106,11 +107,22 @@ Q_final = np.diag(Q_goal.diagonal() * theta)
 P = solve_discrete_are(A_nominal, B_nominal, Q_final, R_goal)
 K_final = np.linalg.inv(R_goal + B_nominal.T @ P @ B_nominal) @ (B_nominal.T @ P @ A_nominal)
 
+x_target = np.array([0.0,0.0,0.0,0.0])
 
 
+while viewer.is_running():
+    step_start = time.time()
 
-print("\n\n\n--- ")
-print(f"K_matrix: {K_final}")
+    x = np.concatenate([data.qpos, data.qvel])
+    u = - K_final @ (x - x_target)
+    data.ctrl[0] = np.clip(u[0], -100,100)
+    # print(f"LQR Gain K: {K}")
+    mujoco.mj_step(model, data)
+    viewer.sync()
+
+    time_until_next_step = model.opt.timestep - (time.time() - step_start)
+    if time_until_next_step > 0:
+        time.sleep(time_until_next_step)
 
 
 
