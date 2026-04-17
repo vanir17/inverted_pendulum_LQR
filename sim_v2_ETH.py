@@ -99,7 +99,7 @@ for i in range (0, i_max):
     g_i = np.mean(gradients, axis = 0)
     theta = theta - a_i * g_i
     theta = np.maximum(theta, 0.01)
-    print(f"Vòng lặp {i}: J = {j_plus}, Theta = {theta}")
+    print(f"Loop {i}: J = {j_plus}, Theta = {theta}")
 
 
 Q_final = np.diag(Q_goal.diagonal() * theta)
