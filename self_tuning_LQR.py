@@ -33,7 +33,7 @@ def cost_evaluation(theta):
     mujoco.mj_resetData(model, data)
     data.qpos[1] = 0.1
     total_cost = 0
-    duration_steps = 3000
+    duration_steps = 800
     
     for k in range(0, duration_steps):
         x = np.concatenate([data.qpos, data.qvel])
@@ -114,7 +114,7 @@ print("Matrix K:\n", K_final)#caculate matrix gain K - LQR
 print("Matrix A:\n", A_nominal)#caculate matrix gain K - LQR
 print("Matrix B:\n", B_nominal)#caculate matrix gain K - LQR
 
-data.qpos[1] = 1
+data.qpos[1] = 0.3
 
 while viewer.is_running():
     step_start = time.time()
